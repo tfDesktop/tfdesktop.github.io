@@ -6,13 +6,30 @@
 		<noscript>Please enable Javascript</noscript>
 		<div id="loading" style="width: 100%; text-align: center; position: relative; top: 50%; transform: translateY(-50%);">LOADING...</div>
 		<script>
+			function getSearchParams(url){
+				var params = {};
+				if(url && url.search){
+					var allParams = url.search.split("?")[1];
+					if(allParams){
+						var pairs = allParams.split("&");
+						if(pairs){
+							for(var i = 0; i < pairs.length; i++){
+								var pair = pairs[i].split("=");
+								params[pair[0]] = pair[1];
+							}
+						}
+					}
+				}
+				return params;
+			}
+			
 			function embedContent(){
 				var frame = document.createElement("iframe");
 				frame.setAttribute("width", "100%");
 				frame.setAttribute("height", "100%");
 				frame.setAttribute("frameborder", "none");
-				var url = new URL(location);
-				var fileId = url.searchParams.get("id") || "";
+				var searchParams = getSearchParams(location);
+				var fileId = searchParams["id"] || "";
 				frame.setAttribute("src", "https://script.google.com/a/travelfusion.com/macros/s/AKfycby_KwYMUQ8Ako4yYm4HOG8stwbt5GRYU0G78HzegcuGQ2x_9q70/exec?id=" + fileId);
 				
 				frame.onload = function(){
