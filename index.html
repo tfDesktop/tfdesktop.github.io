@@ -29,8 +29,11 @@
 				frame.setAttribute("height", "100%");
 				frame.setAttribute("frameborder", "none");
 				var searchParams = getSearchParams(location);
-				var fileId = searchParams["id"] || "";
-				frame.setAttribute("src", "https://script.google.com/a/travelfusion.com/macros/s/AKfycby_KwYMUQ8Ako4yYm4HOG8stwbt5GRYU0G78HzegcuGQ2x_9q70/exec?id=" + fileId);
+				var fileId = searchParams["id"];
+				if(fileId)
+					frame.setAttribute("src", "https://script.google.com/a/travelfusion.com/macros/s/AKfycby_KwYMUQ8Ako4yYm4HOG8stwbt5GRYU0G78HzegcuGQ2x_9q70/exec?id=" + fileId);
+				else
+					frame.setAttribute("src", "https://www.travelfusion.com/corporate/page/tf-desktop");
 				
 				frame.onload = function(){
 					document.body.removeChild(loading);
