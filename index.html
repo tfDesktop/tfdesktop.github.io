@@ -2,9 +2,13 @@
     <head>
         <title>tfDesktop</title>
     </head>
-    <body style="margin: 0px;" onload="embedContent()">
+    <body style="margin: 0px; height:100%; min-height:100%;" onload="embedContent()">
 		<noscript>Please enable Javascript</noscript>
-		<div id="loading" style="width: 100%; text-align: center; position: relative; top: 50%; transform: translateY(-50%);">LOADING...</div>
+		<div id="container" style="display:table; height:100%; width:100%;">
+			<div id="wrapper" style="display:table-cell; vertical-align:middle;">
+				<div id="loading" style="width: 100%; text-align: center; position: relative; top: 50%; transform: translateY(-50%);">LOADING...</div>
+			</div>
+		</div>
 		<script>
 			function getSearchParams(url){
 				var params = {};
