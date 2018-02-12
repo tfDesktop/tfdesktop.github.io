@@ -37,7 +37,7 @@
 					frame.setAttribute("frameborder", "none");
 					frame.setAttribute("src", "https://script.google.com/a/travelfusion.com/macros/s/AKfycby_KwYMUQ8Ako4yYm4HOG8stwbt5GRYU0G78HzegcuGQ2x_9q70/exec?id=" + fileId);
 					frame.onload = function(){
-						loading.parentElement.removeChild(loading);
+						document.body.removeChild(container);
 					};
 					
 					document.body.appendChild(frame);
