@@ -31,12 +31,18 @@
 			function embedContent(){
 				var searchParams = getSearchParams(location);
 				var fileId = searchParams["id"];
-				if(fileId){
+				var fileName = searchParams["gds"];
+				if(fileId || fileName){
+					var baseUrl = "https://script.google.com/a/macros/travelfusion.com/s/AKfycbzEaukyhX5Xw0kt_e9SQuhc6qGg7loVpWG_x09tAwTvlMMT0alL0zVxEy7CK5euQSl-CA/exec?";
 					var frame = document.createElement("iframe");
 					frame.setAttribute("width", "100%");
 					frame.setAttribute("height", "100%");
 					frame.setAttribute("frameborder", "none");
-					frame.setAttribute("src", "https://script.google.com/a/macros/travelfusion.com/s/AKfycbzEaukyhX5Xw0kt_e9SQuhc6qGg7loVpWG_x09tAwTvlMMT0alL0zVxEy7CK5euQSl-CA/exec?id=" + fileId);
+					if (fileId) {
+						frame.setAttribute("src", baseUrl + "id=" + fileId);
+					} else {
+						frame.setAttribute("src", baseUrl + "name=" + fileName);
+					}
 					frame.onload = function(){
 						document.body.removeChild(container);
 					};
